@@ -5,12 +5,11 @@ import Flex from '../layout/Flex';
 import Divider from '../layout/Divider';
 
 // Components
-import { Image, FlatList } from 'react-native';
+import { FlatList } from 'react-native';
 import Button from '../components/Button';
 import Card from '../components/Card';
 
 // Images
-import ropu_black from '../images/ropu_black.png';
 import sword_01b from '../images/sword_01b.png';
 import book_05f from '../images/book_05f.png';
 import potion_03g from '../images/potion_03g.png';
@@ -22,6 +21,7 @@ import NavBar from '../toolbars/NavBar';
 
 // Modules
 import { WhiteSpace, WingBlank } from '../modules/AntDesign';
+import { withRouter } from '../modules/Routing';
 
 // State
 import { connect } from 'react-redux';
@@ -37,20 +37,16 @@ const HomePage = props => {
     <Flex
       flex={1}
     >
-      <Image
-        style={{
-          height: 100,
-          width: undefined
-        }}
-        source={ropu_black}
-        resizeMode='contain'
-      />
+
       <WingBlank>
         <WhiteSpace />
         <Button
           type='outlined'
           title='Player'
           icon={sword_01b}
+          onPress={()=>{
+            props.history.push('/player/characterlist')
+          }}
         />
         <WhiteSpace />
         <Button
@@ -96,4 +92,4 @@ const HomePage = props => {
   )
 }
 
-export default connect(mapStateToProps)(HomePage);
+export default withRouter(connect(mapStateToProps)(HomePage));

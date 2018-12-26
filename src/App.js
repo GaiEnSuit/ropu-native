@@ -15,9 +15,16 @@ import store from './state/store';
 // Layout
 import Flex from './layout/Flex';
 
+// Handlers
+import LogInModalHandler from './handlers/LogInModalHandler';
+
+// Modals
+import LogInModal from './modals/LogInModal';
+
 // Pages
 import LogInPage from './pages/LogInPage';
 import HomePage from './pages/HomePage';
+import CharacterSelectionPage from './pages/CharacterSelectionPage';
 
 const App = props => {
   return (
@@ -30,6 +37,8 @@ const App = props => {
             backgroundColor: 'white'
           }}
         >
+          {/* Handlers Here */}
+          <LogInModalHandler />
           <Router>
             <Flex
               flex={1}
@@ -39,11 +48,17 @@ const App = props => {
                   path='/home'
                   component={HomePage}
                 />
+                <Route
+                  path='/player/characterlist'
+                  component={CharacterSelectionPage}
+                />
                 <Redirect
                   from='/'
                   to='/home'
                 />
               </Switch>
+              {/* Modals Here */}
+              <LogInModal />
             </Flex>
           </Router>
         </SafeAreaView>
